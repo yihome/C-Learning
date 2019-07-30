@@ -1,6 +1,7 @@
-cmake_minimum_required(VERSION 3.10)
-project(C__Learning)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.10)
+PROJECT(C__Learning)
 
-set(CMAKE_CXX_STANDARD 11)
-
-add_executable(C__Learning main.cpp)
+SET(CMAKE_CXX_STANDARD 11)
+AUX_SOURCE_DIRECTORY(class2 CLASS2_SRC)
+ADD_EXECUTABLE(C__Learning main.cpp)
+ADD_EXECUTABLE(class2 ${CLASS2_SRC})

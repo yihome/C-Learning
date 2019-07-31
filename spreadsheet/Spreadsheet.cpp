@@ -4,6 +4,39 @@
 
 #include "Spreadsheet.h"
 
+int Spreadsheet::sCounter;
+
+Spreadsheet::Spreadsheet(const Spreadsheet &src) {
+    copyFrom(rhs);
+}
+
+Spreadsheet &Spreadsheet::operator=(const Spreadsheet &rhs) {
+    if (this == &rhs) {
+        return *this;
+    }
+    for (int i = 0; i < mWidth; ++i) {
+        delete[](mCells[i]);
+    }
+    delete[](mCells);
+    mCells = nullptr;
+    copyFrom(rhs);
+    return *this;
+}
+
+void Spreadsheet::copyFrom(const Spreadsheet &src) {
+    mWidth = src.mWidth;
+    mHeight = src.mHeight;
+    mCells = new SpreadsheetCell *[mWidth];
+    for (int i = 0; i < mWidth; ++i) {
+        mCells[i] = new SpreadsheetCell[mHeight];
+    }
+    for (int i = 0; i < mWidth; ++i) {
+        for (int j = 0; j < mHeight; ++j) {
+            mCells[i][j] = src.mCells[i][j];
+        }
+    }
+}
+
 Spreadsheet::Spreadsheet(int inWidth, int inHeight) {
     mCells = new SpreadsheetCell *[width];
     for (int i = 0; i < inWidth; ++i) {

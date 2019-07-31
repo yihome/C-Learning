@@ -9,6 +9,8 @@
 class Spreadsheet {
 public:
     Spreadsheet(int inWidth, int inHeight);
+    ~Spreadsheet();
+
     void setCellAt(int x, int y, const SpreadsheetCell& cell);
     SpreadsheetCell& getCellAt(int x, int y);
 

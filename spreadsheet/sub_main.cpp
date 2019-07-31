@@ -1,14 +1,13 @@
 #include <iostream>
-#include "EvenSequence.h"
+#include "Spreadsheet.h"
+
+void printSpreadsheet(Spreadsheet s) {
+
+}
 
 int main() {
-    EvenSequence p1 = {1.0, 2.0, 3.0, 4.0, 5.0, 6.0};
-    p1.dump();
-    try {
-        EvenSequence p2 = {1.0,2.0};
-    } catch (const std::invalid_argument &e) {
-        std::cout << e.what() << std::endl;
-    }
+    Spreadsheet s1(4,3);
+    printSpreadsheet(s1);
 
     return 0;
 }

@@ -9,7 +9,7 @@
 #include <initializer_list>
 #include <vector>
 
-class EvenSequence {
+class EvenSequence final{
 public:
     EvenSequence(std::initializer_list<double> args);
     void dump() const ;

@@ -3,7 +3,9 @@ PROJECT(C__Learning)
 
 SET(CMAKE_CXX_STANDARD 11)
 AUX_SOURCE_DIRECTORY(class2 CLASS2_SRC)
+AUX_SOURCE_DIRECTORY(super SUPER_SRC)
 
-ADD_EXECUTABLE(C__Learning main.cpp)
+ADD_EXECUTABLE(C__Learning main.cpp super/Super.cpp super/Super.h)
 
 ADD_EXECUTABLE(class2 ${CLASS2_SRC})
+ADD_EXECUTABLE(super ${SUPER_SRC} super/Sub.cpp super/Sub.h)

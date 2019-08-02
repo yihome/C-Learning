@@ -15,15 +15,17 @@ public:
 
     SpreadsheetCell(double initialValue);
 
-    void setValue(double inValue);
+    void set(double inValue);
 
-    double getValue() const;
+    inline double getValue() const;
 
-    void setString(const string &inString);
+    void set(const string &inString);
 
-    const string &getString() const;
+    inline const string &getString() const;
 
-    SpreadsheetCell &operator= (const SpreadsheetCell& rhs);
+    SpreadsheetCell &operator=(const SpreadsheetCell &rhs);
+
+    SpreadsheetCell operator+(const SpreadsheetCell &cell) const;
 
 private:
     string doubleToString(double inValue) const;
@@ -32,6 +34,7 @@ private:
 
     double mValue;
     string mString;
+    mutable int mNumAccesses = 0;
 };
 
 

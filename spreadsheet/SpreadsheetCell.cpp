@@ -17,25 +17,27 @@ SpreadsheetCell::SpreadsheetCell() : mValue(0) {
 }
 
 SpreadsheetCell::SpreadsheetCell(double initialValue) {
-    setValue(initialValue);
+    set(initialValue);
 }
 
-void SpreadsheetCell::setValue(double inValue) {
+void SpreadsheetCell::set(double inValue) {
     this->mValue = inValue;
     mString = doubleToString(inValue);
     printCell(*this);
 }
 
-double SpreadsheetCell::getValue() const {
+inline double SpreadsheetCell::getValue() const {
+    mNumAccesses++;
     return mValue;
 }
 
-void SpreadsheetCell::setString(const string &inString) {
+void SpreadsheetCell::set(const string &inString) {
     mString = inString;
     mValue = stringToDouble(inString);
 }
 
-const string &SpreadsheetCell::getString() const {
+inline const string &SpreadsheetCell::getString() const {
+    mNumAccesses++;
     return mString;
 }
 
@@ -57,10 +59,16 @@ string SpreadsheetCell::doubleToString(double inValue) const {
 
 SpreadsheetCell &SpreadsheetCell::operator=(const SpreadsheetCell &rhs) {
     if (this == &rhs) {
-        return this;
+        return *this;
     }
     mValue = rhs.mValue;
     mString = rhs.mString;
     return *this;
+}
+
+SpreadsheetCell SpreadsheetCell::operator+(const SpreadsheetCell &cell) const {
+    SpreadsheetCell newCell;
+    newCell.set(mValue + cell.mValue);
+    return newCell;
 }
 

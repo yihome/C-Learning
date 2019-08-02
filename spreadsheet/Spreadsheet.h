@@ -7,9 +7,12 @@
 
 #include "SpreadsheetCell.h"
 
+class SpreadsheetApplication {
+};
+
 class Spreadsheet {
 public:
-    Spreadsheet(int inWidth, int inHeight);
+    explicit Spreadsheet(const SpreadsheetApplication &theApp, int inWidth = kMaxWidth, int inHeight = kMaxHeight);
 
     ~Spreadsheet();
 
@@ -21,14 +24,23 @@ public:
 
     SpreadsheetCell &getCellAt(int x, int y);
 
+    int getId() const;
+
+    static const int kMaxHeight = 100;
+    static const int kMaxWidth = 100;
+
 private:
     static int sCounter;
 
     bool inRange(int val, int upper);
-    void copyFrom(const Spreadsheet& src);
+
+    void copyFrom(const Spreadsheet &src);
 
     int mWidth, mHeight;
     SpreadsheetCell **mCells;
+    int mId;
+    const SpreadsheetApplication &mTheApp;
+
 };
 
 

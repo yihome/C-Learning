@@ -6,8 +6,8 @@
 
 int Spreadsheet::sCounter;
 
-Spreadsheet::Spreadsheet(const Spreadsheet &src) {
-    copyFrom(rhs);
+Spreadsheet::Spreadsheet(const Spreadsheet &src) : mTheApp(src.mTheApp) {
+    copyFrom(src);
 }
 
 Spreadsheet &Spreadsheet::operator=(const Spreadsheet &rhs) {
@@ -37,8 +37,12 @@ void Spreadsheet::copyFrom(const Spreadsheet &src) {
     }
 }
 
-Spreadsheet::Spreadsheet(int inWidth, int inHeight) {
-    mCells = new SpreadsheetCell *[width];
+Spreadsheet::Spreadsheet(const SpreadsheetApplication &theApp, int inWidth, int inHeight) :
+        mWidth(inWidth < kMaxWidth ? inWidth : kMaxWidth),
+        mHeight(inHeight < kMaxHeight ? inHeight : kMaxHeight),
+        mTheApp(theApp) {
+    mId = sCounter++;
+    mCells = new SpreadsheetCell *[mWidth];
     for (int i = 0; i < inWidth; ++i) {
         mCells[i] = new SpreadsheetCell[mHeight];
     }
@@ -74,3 +78,6 @@ Spreadsheet::~Spreadsheet() {
     mCells = nullptr;
 }
 
+int Spreadsheet::getId() const {
+    return mId;
+}

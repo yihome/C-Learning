@@ -26,9 +26,9 @@ Spreadsheet &Spreadsheet::operator=(const Spreadsheet &rhs) {
 void Spreadsheet::copyFrom(const Spreadsheet &src) {
     mWidth = src.mWidth;
     mHeight = src.mHeight;
-    mCells = new SpreadsheetCell *[mWidth];
+    mCells = new SpreadsheetCell2 *[mWidth];
     for (int i = 0; i < mWidth; ++i) {
-        mCells[i] = new SpreadsheetCell[mHeight];
+        mCells[i] = new SpreadsheetCell2[mHeight];
     }
     for (int i = 0; i < mWidth; ++i) {
         for (int j = 0; j < mHeight; ++j) {
@@ -42,13 +42,13 @@ Spreadsheet::Spreadsheet(const SpreadsheetApplication &theApp, int inWidth, int 
         mHeight(inHeight < kMaxHeight ? inHeight : kMaxHeight),
         mTheApp(theApp) {
     mId = sCounter++;
-    mCells = new SpreadsheetCell *[mWidth];
+    mCells = new SpreadsheetCell2 *[mWidth];
     for (int i = 0; i < inWidth; ++i) {
-        mCells[i] = new SpreadsheetCell[mHeight];
+        mCells[i] = new SpreadsheetCell2[mHeight];
     }
 }
 
-void Spreadsheet::setCellAt(int x, int y, const SpreadsheetCell &cell) {
+void Spreadsheet::setCellAt(int x, int y, const SpreadsheetCell2 &cell) {
     if (!inRange(x, mWidth) || inRange(y, mHeight)) {
         throw std::out_of_range("params out of range");
     }
@@ -56,7 +56,7 @@ void Spreadsheet::setCellAt(int x, int y, const SpreadsheetCell &cell) {
 
 }
 
-SpreadsheetCell &Spreadsheet::getCellAt(int x, int y) {
+SpreadsheetCell2 &Spreadsheet::getCellAt(int x, int y) {
     if (!inRange(x, mWidth) || !inRange(y, mHeight)) {
         throw std::out_of_range("params out of range");
     }

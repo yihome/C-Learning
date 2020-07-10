@@ -6,10 +6,11 @@
 #define C_LEARNING_REFENRECE_H
 
 #include <vector>
+#include <iostream>
 
 using namespace std;
 
-class Refenrece {
+class Reference {
 private:
     int x;
 public:
@@ -17,7 +18,17 @@ public:
 
     void separateOddsAndEvents(const vector<int> &arr, vector<int> &odds, vector<int> &evens);
 
-    
+    Reference(int x) : x(x) {
+        cout << "using common constructor" << endl;
+    }
+
+    Reference(const Reference &r) : x(r.x) {
+        cout << "using copy constructor" << endl;
+    }
+
+    Reference(Reference && r):x(r.x){
+        
+    }
 };
 
 

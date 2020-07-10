@@ -3,3 +3,11 @@
 //
 
 #include "StringSpreadsheetCell.h"
+
+void StringSpreadsheetCell::set(const std::string &inString) {
+    mValue = inString;
+}
+
+std::string StringSpreadsheetCell::getString() const {
+    return mValue;
+}

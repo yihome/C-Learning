@@ -6,6 +6,7 @@
 #define C__LEARNING_SPREADSHEET_H
 
 #include "SpreadsheetCell.h"
+#include "../spreadsheet2/SpreadsheetCell2.h"
 
 class SpreadsheetApplication {
 };
@@ -20,9 +21,9 @@ public:
 
     Spreadsheet &operator=(const Spreadsheet &rhs);
 
-    void setCellAt(int x, int y, const SpreadsheetCell &cell);
+    void setCellAt(int x, int y, const SpreadsheetCell2 &cell);
 
-    SpreadsheetCell &getCellAt(int x, int y);
+    SpreadsheetCell2 &getCellAt(int x, int y);
 
     int getId() const;
 
@@ -37,7 +38,7 @@ private:
     void copyFrom(const Spreadsheet &src);
 
     int mWidth, mHeight;
-    SpreadsheetCell **mCells;
+    SpreadsheetCell2 **mCells;
     int mId;
     const SpreadsheetApplication &mTheApp;
 

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <memory>
 #include "Spreadsheet.h"
+#include "../spreadsheet2/SpreadsheetCell2.h"
 
 
 using namespace std;
@@ -14,8 +15,8 @@ int main() {
     Spreadsheet s1(*uniquePtr);
     std::string s("11");
     printSpreadsheet(s1);
-    SpreadsheetCell cell(4);
-    SpreadsheetCell cell1 = cell + cell;
-    SpreadsheetCell cell2 = cell1 + 4.5;
+//    SpreadsheetCell2 cell(4);
+//    SpreadsheetCell2 cell1 = cell + cell;
+//    SpreadsheetCell2 cell2 = cell1 + 4.5;
     return 0;
 }

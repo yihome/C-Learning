@@ -2,15 +2,17 @@
 // Created by apple on 2019/8/2.
 //
 
-#ifndef C_LEARNING_SPREADSHEETCELL_H
-#define C_LEARNING_SPREADSHEETCELL_H
+#ifndef C_LEARNING_SPREADSHEETCELL2_H
+#define C_LEARNING_SPREADSHEETCELL2_H
 
 
-class SpreadsheetCell {
+#include <string>
+
+class SpreadsheetCell2 {
 public:
-    SpreadsheetCell();
+    SpreadsheetCell2();
 
-    virtual ~SpreadsheetCell();
+    virtual ~SpreadsheetCell2();
 
     virtual void set(const std::string &inString) = 0;
 
@@ -24,4 +26,4 @@ private:
 };
 
 
-#endif //C_LEARNING_SPREADSHEETCELL_H
+#endif //C_LEARNING_SPREADSHEETCELL2_H
